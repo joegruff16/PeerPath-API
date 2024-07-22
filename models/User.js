@@ -1,3 +1,5 @@
+const { Schema, Types } = require("mongoose");
+
 const userSchema = new Schema({
   username: {
     type: String,
@@ -25,3 +27,5 @@ const userSchema = new Schema({
   ],
 });
 // Need to create a virtual named friendCount that retrieves the length of the user's friends array field on query
+
+module.exports = { userSchema };
