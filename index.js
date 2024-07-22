@@ -12,9 +12,9 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 // Our middleware configuration functionality
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(routes);
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+// app.use(routes);
 
 // This is a database event listener that will listen for connections on the specified port
 db.once("open", () => {
