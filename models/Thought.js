@@ -10,7 +10,8 @@ const thoughtSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-    // Use getter method to format the timestamp on query? Not sure how
+    // Use getter method to format the timestamp on query
+    get: (timestamp) => new Date(timestamp).toLocaleString(),
     toJSON: {
       getters: true,
     },
@@ -40,7 +41,8 @@ const reactionSchema = new Schema({
   createdAt: {
     Date,
     default: Date.now,
-    // Use getter method to format the timestamp on query? Not sure how
+    // Use getter method to format the timestamp on query
+    get: (timestamp) => new Date(timestamp).toLocaleString(),
     toJSON: {
       getters: true,
     },
