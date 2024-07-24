@@ -1,5 +1,5 @@
 // Install packages for routes
-const router = require("express").Router();
+const router = require('express').Router();
 
 // Create variables to store route
 const thoughtRoutes = require("./thoughtRoutes");

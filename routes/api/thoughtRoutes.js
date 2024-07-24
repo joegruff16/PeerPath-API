@@ -1,3 +1,5 @@
+// Packages used Express Router
+const router = require("express").Router();
 // `/api/thoughts`
 
 // Get route to get all thoughts
@@ -16,3 +18,6 @@
 // `POST` to create a reaction stored in a single thought's `reactions` array field
 
 // `DELETE` to pull and remove a reaction by the reaction's `reactionId` value
+
+// Export router to make this route available
+module.exports = router;

@@ -1,3 +1,6 @@
+// Using Express Router to establish routes
+const router = require("express").Router();
+
 // We need routes`/api/users:
 
 // to GET all users
@@ -16,3 +19,6 @@
 // POST route to add a new friend to the user's friend list
 
 // Delete route to remove a friend from the friend list
+
+// Export router to make this route available
+module.exports = router;
