@@ -1,3 +1,16 @@
+// Import Thought Model
+const Thought = require("../models");
+
+// Since all of this logic needs to be exported doing it this way
+module.exports = {
+  // Get all thoughts
+  async getThoughts(req, res) {
+    try {
+        const thoughts = await.Thought.find().populate
+    }
+  }
+};
+
 // I was wondering if Controllers were necessary for this challenge
 // This is what the Xpert Learning Assistant mentioned:
 // Controllers in an Express.js application help to separate the concerns and responsibilities of different parts of your application. They are responsible for handling the application logic, processing requests, interacting with the database through models, and sending back responses.
@@ -7,3 +20,5 @@
 // Therefore, in the context of the MongoDB challenge in module 18, it is recommended to use controllers to handle the logic for managing user thoughts, reactions, friend lists, and any other operations related to the social network functionality.
 
 // Basically controllers should have all the implementation logic for specified routes so that the routes files can be much more clean
+
+// What is the logic behind each route?
