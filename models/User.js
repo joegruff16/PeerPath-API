@@ -11,7 +11,8 @@ const userSchema = new Schema({
     type: String,
     required: true,
     unique: true,
-    // must match a valid email address with MOngoose matching validation
+    match: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+    // must match a valid email address with Mongoose matching validation
   },
   thoughts: [
     {
@@ -26,6 +27,24 @@ const userSchema = new Schema({
     },
   ],
 });
-// Need to create a virtual named friendCount that retrieves the length of the user's friends array field on query
+// This variable stores the proper email example then the user is saved. If successful this log message will display otherwise another error log message will display with the .catch
+const newUser = newUser({
+  email: "test@gmail.com",
+});
+newUser
+  .save()
+  .then((user) => {
+    console.log("New user saved", user);
+  })
+  .catch((error) => {
+    console.error("Unable to save user:", error);
+  });
 
-module.exports = { userSchema };
+// Virtual named friendCount that retrieves the length of the user's friends array field on query
+userSchema.virtual("friendCount").get(function () {
+  return this.friends.length;
+});
+// Initialize my User model
+const User = model("user", userSchema);
+
+module.exports = User;
