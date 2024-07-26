@@ -1,4 +1,4 @@
-const { Schema, Types } = require("mongoose");
+const { Schema, model, Types } = require("mongoose");
 
 // Schema consists of thoughtText, createdAt, username, reactions
 const thoughtSchema = new Schema({
@@ -52,5 +52,8 @@ const reactionSchema = new Schema({
 thoughtSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
 });
+
+// Initialize my Thought model - this might need to go above newUser
+const Thought = model("thought", userSchema);
 // This will make this model available outside of this file
-module.exports = { thoughtSchema, reactionSchema };
+module.exports = Thought;
