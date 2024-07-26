@@ -13,9 +13,21 @@ module.exports = {
       res.status(500).send({ message: "Error couldnt populate Thoughts" });
     }
   },
-};
+  // Need a GET route to get a single thought by _id
+  async getSingleThought(res, req) {
+    try {
+      const thought = await Thought.findOne({ _id: req.params.thoughtId });
+      // Adding if to determine if there's no thought to return a 404 otherwise return that thought
+      if (!thought) {
+        return res.status(404).json({ message: "No thought with this ID" });
+      }
 
-// Need a GET route to get a single thought by _id
+      res.json(thought);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
+};
 
 // POST route to creat e a new thought. Tip: don't forget to push the created thought's `_id` to the associated user's `thoughts` array field
 
