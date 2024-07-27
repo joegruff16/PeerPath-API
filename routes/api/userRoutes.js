@@ -1,12 +1,17 @@
 // Using Express Router to establish routes
 const router = require("express").Router();
 
-// We need routes`/api/users:
+const {
+  getUser,
+  getUsers,
+  createUser,
+} = require("../../controllers/userController");
 
-// to GET all users
+// We need routes`/api/users: includes GET and POST
+router.route("/").get(getUser).post(createUser);
 
 // Get a single user by _id
-
+router.route("/:userId").get(getUsers);
 // Post route to add a new user
 
 // Put route to update a user by their _id
