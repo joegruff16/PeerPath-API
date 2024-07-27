@@ -26,8 +26,16 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-
   // Post route to add a new user
+  async createUser(req, res) {
+    try {
+      const newUser = await User.create(req.body);
+      res.json(newUser);
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json(err);
+    }
+  },
 
   // Put route to update a user by their _id
 

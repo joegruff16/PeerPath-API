@@ -27,9 +27,20 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+
+  // Post route to new thought add Tip: don't forget to push the created thought's `_id` to the associated user's `thoughts` array field
+  async createThought(req, res) {
+    try {
+      const newThought = await Thought.create(req.body);
+      res.json(newThought);
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json(err);
+    }
+  },
 };
 
-// POST route to creat e a new thought. Tip: don't forget to push the created thought's `_id` to the associated user's `thoughts` array field
+// POST route to creat e a new thought.
 
 // `PUT` to update a thought by its `_id`
 
