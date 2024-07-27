@@ -54,6 +54,6 @@ thoughtSchema.virtual("reactionCount").get(function () {
 });
 
 // Initialize my Thought model - this might need to go above newUser
-const Thought = model("thought", userSchema);
+const Thought = model("thought", thoughtSchema);
 // This will make this model available outside of this file
 module.exports = Thought;
