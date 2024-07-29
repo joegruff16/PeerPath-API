@@ -8,20 +8,20 @@ module.exports = {
   // to GET all users
   async getUsers(req, res) {
     try {
-      const users = await User.find({}).lean();
-      res.status(200).json(users);
+      const userData = await User.find();
+      res.status(200).json(userData);
     } catch (err) {
       res.status(500).send({ message: "No user populated" });
     }
   },
   // Get a single user by _id
-  async getUser(req, res) {
+  async getOneUser(req, res) {
     try {
-      const user = await User.findOne({ _id: req.params.userId });
-      if (!user) {
+      const userData = await User.findOne({ _id: req.params.userId });
+      if (!userData) {
         return res.status(404).send({ message: "No user found with this ID" });
       }
-      res.status(200).json(user);
+      res.status(200).json(userData);
     } catch (err) {
       res.status(500).json(err);
     }
