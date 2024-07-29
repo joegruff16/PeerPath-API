@@ -36,25 +36,6 @@ const userSchema = new Schema(
   }
 );
 
-// This variable stores the proper email example then the user is saved. If successful this log message will display otherwise another error log message will display with the .catch
-// function newUserInitilization() {
-//   const newUser = new mongoose.model("User", userSchema)({
-//     username: "janedoe",
-//     email: "test@gmail.com",
-//   });
-//   newUser
-//     .save()
-//     .then(() => {
-//       console.log("New user saved");
-//     })
-//     .catch((error) => {
-//       console.error("Unable to save user:", error);
-//     });
-// }
-
-// Initialize my User model - this might need to go above newUser
-// const User = model("user", userSchema);
-// newUserInitilization();
 // Virtual named friendCount that retrieves the length of the user's friends array field on query
 userSchema.virtual("friendCount").get(function () {
   return this.friends.length;

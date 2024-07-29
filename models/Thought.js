@@ -47,7 +47,14 @@ const thoughtSchema = new Schema({
     required: true,
   },
   reactions: [reactionSchema],
-});
+},
+{
+  toJSON: {
+    virtuals: true,
+  },
+  id: false,
+}
+);
 console.log(reactionSchema);
 
 // Schema consists of thoughtText, createdAt, username, reactions
