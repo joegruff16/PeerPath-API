@@ -16,13 +16,13 @@ module.exports = {
   // Need a GET route to get a single thought by _id
   async getSingleThought(res, req) {
     try {
-      const thought = await Thought.findOne({ _id: req.params.thoughtId });
+      const thoughtData = await Thought.findOne({ _id: req.params.thoughtId });
       // Adding if to determine if there's no thought to return a 404 otherwise return that thought
-      if (!thought) {
+      if (!thoughtData) {
         return res.status(404).json({ message: "No thought with this ID" });
       }
 
-      res.json(thought);
+      res.status(200).json(thoughtData);
     } catch (err) {
       res.status(500).json(err);
     }
