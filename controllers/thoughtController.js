@@ -1,5 +1,5 @@
 // Import Thought Model
-const { Thought } = require('../models');
+const { Thought, User } = require("../models");
 
 // Since all of this logic needs to be exported doing it this way
 module.exports = {
@@ -31,7 +31,15 @@ module.exports = {
   // Post route to new thought add Tip: don't forget to push the created thought's `_id` to the associated user's `thoughts` array field
   async createThought(req, res) {
     try {
+      // Create a new thought
       const newThought = await Thought.create(req.body);
+      // This is where we would find the user by ID to the user's thought array
+      await User.findByIdAndUpdate(
+        req.body.userId,
+        { $push: { thoughts: newThought._id } },
+        { new: true, useFindandModify: false }
+      );
+      // Now that we have the ID we can respond with the new thought
       res.json(newThought);
     } catch (err) {
       console.log(err);
@@ -39,8 +47,6 @@ module.exports = {
     }
   },
 };
-
-// POST route to creat e a new thought.
 
 // `PUT` to update a thought by its `_id`
 
