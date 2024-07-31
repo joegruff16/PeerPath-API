@@ -21,7 +21,7 @@ This backend app uses a custom API to simulate a social media platform, allowing
 
 ## Video Link
 
-<>
+<https://drive.google.com/file/d/1-PBfNzfuoMLNWl25tV_g83dpI89iBmzp/view?usp=sharing>
 
 ## GitHub Repo
 
