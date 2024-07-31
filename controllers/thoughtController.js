@@ -55,10 +55,13 @@ module.exports = {
         { $set: req.body },
         { new: true, runValidators: true }
       );
+      if (!updatedThought) {
+        return res.status(404).json({ message: "No thought with this ID" });
+      }
       res.status(200).json(updatedThought);
     } catch (err) {
       console.log(err);
-      return res.status(500).json(err);
+      res.status(500).json(err);
     }
   },
 };
