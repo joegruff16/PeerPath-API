@@ -37,13 +37,20 @@ module.exports = {
     }
   },
   // Put route to update a user by their _id
-
+  async updateUser(req, res) {
+    try {
+      const updatedUser = await User.findByIdAndUpdate(
+        { _id: req.params.userId },
+        { $set: req.body },
+        { new: true, runValidators: true }
+      );
+      if (!updatedUser) {
+        return res.status(404).json({ message: "No user with this ID" });
+      }
+      res.status(200).json({ message: "User updated" });
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  },
   // Delete route to remove a user by _id
-
-  // We could possibly make a new route all together for this I will see how clean it looks
-  // `/api/users/:userId/friends/:friendId`
-
-  // POST route to add a new friend to the user's friend list
-
-  // Delete route to remove a friend from the friend list
 };
