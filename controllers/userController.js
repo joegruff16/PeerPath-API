@@ -36,7 +36,6 @@ module.exports = {
       return res.status(500).json(err);
     }
   },
-
   // Put route to update a user by their _id
 
   // Delete route to remove a user by _id

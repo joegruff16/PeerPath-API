@@ -7,7 +7,7 @@ const {
   createUser,
 } = require("../../controllers/userController");
 
-// We need routes`/api/users: includes GET and POST
+// Used this router method to get all users and to create a user with a post route
 router.route("/").get(getUsers).post(createUser);
 
 // Get a single user by _id
