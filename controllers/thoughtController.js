@@ -46,9 +46,22 @@ module.exports = {
       return res.status(500).json(err);
     }
   },
-};
 
-// `PUT` to update a thought by its `_id`
+  // `PUT` to update a thought by its `_id`
+  async updateThought(req, res) {
+    try {
+      const updatedThought = await Thought.findByIdAndUpdate(
+        { _id: req.params.thoughtId },
+        { $set: req.body },
+        { new: true, runValidators: true }
+      );
+      res.status(200).json(updatedThought);
+    } catch (err) {
+      console.log(err);
+      return res.status(500).json(err);
+    }
+  },
+};
 
 // `DELETE` to remove a thought by its `_id`
 
